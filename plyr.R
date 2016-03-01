@@ -1,10 +1,10 @@
 library(ggplot2)
 library(plyr)
-#选取各个颜色中carat最小的钻石
+#选取??????色??carat??小????石
 ddply(diamonds,.(color),subset,carat==min(carat))
-#选取各个颜色中carat最小的前两个钻石
+#选取??????色??carat??小??前锟斤拷????石
 ddply(diamonds,.(color),subset,order(carat)<=2)
-#选取各个颜色中carat百分前1的钻石
+#选取??????色??carat?俜?前1????石
 ddply(diamonds,.(color),subset,carat>quantile(carat,0.99))
 
 dsmall<-diamonds[sample(nrow(diamonds),50),]
@@ -18,10 +18,10 @@ nmissing<-function(x){sum(is.na(x))}
 nmissing(msleep$name)
 nmissing(msleep$brainwt)
 nmissing(msleep)
-#将原本对单行向量操作的函数转化为对竖向操作
+#??原???缘?????锟斤拷?????暮???转??为??????????
 nmissing_df<-colwise(nmissing)
 nmissing_df(msleep)
-#简化
+#????
 colwise(nmissing)(msleep)
 #numcolwise()
 msleep2<-msleep[,-6]
@@ -29,12 +29,13 @@ numcolwise(median)(msleep2,na.rm=T)
 numcolwise(quantile)(msleep2,na.rm=T)
 numcolwise(quantile)(msleep2,probs=c(0.25,0.75),na.rm=T)
 
+
 ddply(msleep2,.(vore),numcolwise(median),na.rm=T)
 ddply(msleep2,.(vore),numcolwise(mean),na.rm=T)
 ####
 
 
-#函数必须能对根据分类变量分类好的数据框进行计算
+#?????????芏愿??莘?????锟斤拷?????玫????菘????屑???
 my_summary<-function(df){
   with(df,data.frame(
     pc_cor=cor(price,carat,method="spearman"),
