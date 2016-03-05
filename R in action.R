@@ -365,7 +365,7 @@ cast(dfm, am + cyl + variable ~ ., dstats)
 频数表和列联表
 本节中的数据来自vcd包中的Arthritis数据集
 library(vcd)
-> head(Arthritis)
+head(Arthritis)
 生成频数表
 table(var1, var2, …, varN)     使用 N 个类别型变量（因子）创建一个 N 维列联表
 xtabs(formula, data)           根据一个公式和一个矩阵或数据框创建一个 N 维列联表
